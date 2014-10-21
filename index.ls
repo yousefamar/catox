@@ -1,4 +1,4 @@
-require! [blessed, fs]
+require! [fs, blessed, \./ratox.js]
 
 screen = blessed.screen!
 
@@ -29,16 +29,16 @@ textbox = blessed.textbox {
 do-log = !->
   log.push-line it
   log.set-scroll-perc 100pc
+  screen.render!
 
 screen.append log
 screen.append line
 screen.append textbox
 
-screen.key [\q, \C-c], -> process.exit 0
-
-screen.key \i, !-> textbox.read-input ->
-
-screen.key \e, !-> textbox.read-editor ->
+screen.key [\q, \C-c], !->
+  ratox.destruct!
+  process.exit!
+  #process.kill process.pid, \SIGINT
 
 screen.key \j, !->
   log.scroll 10chars
@@ -54,18 +54,22 @@ screen.key \S-k, !->
   screen.render!
 
 textbox.on \submit, !->
-  do-log it
   textbox.clear-value!
   textbox.read-input ->
-  screen.render!
+  do-log it
+  ratox.text-out it
 
-textbox.read-input ->
+init = !->
+  ratox.text-in !-> do-log "#it".trim!
+  screen.key \i, !-> textbox.read-input ->
+  screen.key \e, !-> textbox.read-editor ->
+  textbox.read-input ->
 
-fs.readFile \init.txt, (err, data) !->
+fs.readFile __dirname + \/init.txt, (err, data) !->
   #if err then throw err
-  if err then return
-  log.push-line "#data"
-  log.set-scroll-perc 100pc
-  screen.render!
+  if not err then do-log "#data"
+  ratox-dir = process.cwd!
+  if process.argv.length > 2 then ratox-dir = process.argv[2]
+  ratox.init ratox-dir, do-log, init
 
 screen.render!

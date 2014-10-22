@@ -12,13 +12,17 @@
     "gui",
     "ratox"
   ],
-  "author": "Yousef Amar",
+  "author": "Yousef Amar <yousef@amar.io>",
   "license": "ISC",
   "dependencies": {
     "blessed": "0.0.37",
     "moment": "^2.8.3"
   },
   "devDependencies": {},
+  "preferGlobal": true,
+  "bin": {
+    "catox": "index.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Paraknight/catox.git"

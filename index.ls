@@ -1,4 +1,4 @@
-require! [fs, blessed, \./ratox.js]
+require! [fs, blessed, moment, \./ratox.js]
 
 screen = blessed.screen!
 
@@ -57,11 +57,11 @@ screen.key \S-k, !->
 textbox.on \submit, !->
   textbox.clear-value!
   textbox.read-input ->
-  do-log it
+  do-log "\033[1;30m#{moment!.format \H:mm} {green-fg}{bold}#{ratox.name-own}:{/} #it"
   ratox.text-out it
 
 init = !->
-  ratox.text-in !-> do-log "#it".trim!
+  ratox.text-in !-> do-log "\033[1;30m#{moment!.format \H:mm} {green-fg}{bold}#{ratox.name-friend}:{/} #{it.trim!}"
   screen.key \i, !-> textbox.read-input ->
   screen.key \e, !-> textbox.read-editor ->
   textbox.read-input ->

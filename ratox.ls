@@ -19,31 +19,27 @@ fifo-writer = (filename) ->
   streams.push stream
   !-> stream.write "#it\n"
 
-#file-in = fifo-reader dir + \file_in
-#file-out = fifo-writer dir + \file_out
 
-text-in = fifo-reader dir + \text_in
-text-out = fifo-writer dir + \text_out
-
-static-data = {}
-
-init = (callback) !->
+init = (ratox-dir, do-log, callback) !->
+  dir := "#ratox-dir/"
+  log := do-log
   name <-! read-file \../name/out, _
-  static-data.name-own = name
+  module.exports.name-own = "#name".trim!
   name <-! read-file \name, _
-  static-data.name-friend = name
+  module.exports.name-friend = "#name".trim!
+
+  #file-in = fifo-reader dir + \file_in
+  #file-out = fifo-writer dir + \file_out
+
+  module.exports.text-in = fifo-reader dir + \text_in
+  module.exports.text-out = fifo-writer dir + \text_out
+
+  delete module.exports.init
   callback!
 
-module.exports = {
-  init: (ratox-dir, do-log, callback) !->
-    dir := "#ratox-dir/"
-    log := do-log
-    delete module.exports.init
-    callback!
 
-  static-data
-  text-in
-  text-out
+module.exports = {
+  init: init
 
   # FIXME: Nothing works.
   destruct: !-> for stream in streams

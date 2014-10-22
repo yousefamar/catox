@@ -15,6 +15,7 @@
   "author": "Yousef Amar",
   "license": "ISC",
   "dependencies": {
-    "blessed": "0.0.37"
+    "blessed": "0.0.37",
+    "moment": "^2.8.3"
   }
 }

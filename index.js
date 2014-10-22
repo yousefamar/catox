@@ -64,7 +64,7 @@ textbox.on('submit', function(it){
 });
 init = function(){
   ratox.textIn(function(it){
-    doLog("\x1b[1;30m" + moment().format('H:mm') + " {green-fg}{bold}" + ratox.nameFriend + ":{/} " + it.trim());
+    doLog("\x1b[1;30m" + moment().format('H:mm') + " {green-fg}{bold}" + ratox.nameFriend + ":{/} " + (it + "").trim());
   });
   screen.key('i', function(){
     textbox.readInput(function(){});

@@ -10,7 +10,8 @@ log = blessed.box({
   alwaysScroll: true,
   vi: true,
   top: 0,
-  bottom: 2
+  bottom: 2,
+  tags: true
 });
 line = blessed.line({
   parent: screen,

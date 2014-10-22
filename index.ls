@@ -9,6 +9,7 @@ log = blessed.box {
   vi: true
   top: 0char
   bottom: 2chars
+  tags: true
 }
 
 line = blessed.line {

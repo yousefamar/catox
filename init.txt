@@ -17,4 +17,4 @@
               /                \
 {/}
 
-{blue-fg}{bold}Catox v0.1 - Type /help for a list of commands.{/}
+{blue-fg}{bold}Catox v1.0.1 - Type /help for a list of commands.{/}

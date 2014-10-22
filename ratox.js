@@ -36,8 +36,8 @@ init = function(ratoxDir, doLog, callback){
     module.exports.nameOwn = (name + "").trim();
     readFile('name', function(name){
       module.exports.nameFriend = (name + "").trim();
-      module.exports.textIn = fifoReader(dir + 'text_in');
-      module.exports.textOut = fifoWriter(dir + 'text_out');
+      module.exports.textIn = fifoReader(dir + 'text_out');
+      module.exports.textOut = fifoWriter(dir + 'text_in');
       delete module.exports.init;
       callback();
     });

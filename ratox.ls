@@ -31,8 +31,8 @@ init = (ratox-dir, do-log, callback) !->
   #file-in = fifo-reader dir + \file_in
   #file-out = fifo-writer dir + \file_out
 
-  module.exports.text-in = fifo-reader dir + \text_in
-  module.exports.text-out = fifo-writer dir + \text_out
+  module.exports.text-in = fifo-reader dir + \text_out
+  module.exports.text-out = fifo-writer dir + \text_in
 
   delete module.exports.init
   callback!

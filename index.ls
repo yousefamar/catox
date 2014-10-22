@@ -58,7 +58,10 @@ textbox.on \submit, !->
   ratox.text-out it
 
 init = !->
-  ratox.text-in !-> do-log "\033[1;30m#{moment!.format \H:mm} {green-fg}{bold}#{ratox.name-friend}:{/} #{"#it".trim!}"
+  ratox.text-in !->
+    it = "#it".trim!.slice 17
+    do-log "\033[1;30m#{moment!.format \H:mm} {green-fg}{bold}#{ratox.name-friend}:{/} #it"
+    process.stdout.write '\x07'
   screen.key \i, !-> textbox.read-input ->
   screen.key \e, !-> textbox.read-editor ->
   textbox.read-input ->

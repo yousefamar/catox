@@ -1,6 +1,6 @@
 {
   "name": "catox",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A customizable, lightweight, minimalistic, text-based UI for single user chat that runs on top of ratox.",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,8 @@
   "license": "ISC",
   "dependencies": {
     "blessed": "0.0.37",
-    "moment": "^2.8.3"
+    "moment": "^2.8.3",
+    "tail": "^0.4.0"
   },
   "devDependencies": {},
   "preferGlobal": true,

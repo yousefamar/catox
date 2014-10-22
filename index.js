@@ -38,7 +38,6 @@ screen.append(log);
 screen.append(line);
 screen.append(textbox);
 screen.key(['q', 'C-c'], function(){
-  ratox.destruct();
   process.exit();
 });
 screen.key('j', function(){

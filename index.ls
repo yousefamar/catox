@@ -36,10 +36,7 @@ screen.append log
 screen.append line
 screen.append textbox
 
-screen.key [\q, \C-c], !->
-  ratox.destruct!
-  process.exit!
-  #process.kill process.pid, \SIGINT
+screen.key [\q, \C-c], !-> process.exit!
 
 screen.key \j, !->
   log.scroll 10chars

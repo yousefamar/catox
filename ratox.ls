@@ -2,7 +2,6 @@ require! fs
 
 dir = ''
 log = null
-streams = []
 
 read-file = (filename, callback) !->
   fs.readFile dir + filename, (err, data) !->
@@ -12,11 +11,9 @@ fifo-reader = (filename) ->
   (callback) !->
     stream = fs.create-read-stream filename
     stream.on \data, callback
-    streams.push stream
 
 fifo-writer = (filename) ->
   stream = fs.create-write-stream filename
-  streams.push stream
   !-> stream.write "#it\n"
 
 
@@ -40,10 +37,4 @@ init = (ratox-dir, do-log, callback) !->
 
 module.exports = {
   init: init
-
-  # FIXME: Nothing works.
-  destruct: !-> for stream in streams
-    if \end in stream then stream.end!
-    if \pause in stream then stream.pause!
-    stream.destroy!
 }

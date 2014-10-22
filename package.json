@@ -1,7 +1,7 @@
 {
   "name": "catox",
   "version": "1.0.0",
-  "description": "A tiny Tox single user chat ncurses GUI that runs on top of ratox",
+  "description": "A customizable, lightweight, minimalistic, text-based UI for single user chat that runs on top of ratox.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,5 +17,14 @@
   "dependencies": {
     "blessed": "0.0.37",
     "moment": "^2.8.3"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Paraknight/catox.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Paraknight/catox/issues"
+  },
+  "homepage": "https://github.com/Paraknight/catox"
 }
